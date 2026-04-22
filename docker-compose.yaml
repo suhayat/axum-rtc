@@ -1,0 +1,6 @@
+services:
+  app:
+    build: .
+    ports:
+      - "10000:10100/udp"
+
