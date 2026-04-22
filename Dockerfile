@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     pkg-config \
     libssl-dev \
     python3 \
+    python3-pip \
     make \
     g++ \
     && rustup component add rustfmt \
