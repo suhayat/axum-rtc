@@ -49,6 +49,11 @@ COPY --from=backend-builder /app/target/release/axum_rtc /app/axum_rtc
 # Copy the frontend dist folder
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
 
+# Setup environment
+ENV HOST=0.0.0.0
+ENV PORT=3030
+# ANNOUNCED_IP should be set in Dokploy environment variables
+
 EXPOSE 3030
 # Note: Mediasoup also requires a range of UDP ports (e.g., 10000-20000) 
 # which should be configured in Dokploy/Docker port mapping.

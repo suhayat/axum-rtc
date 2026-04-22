@@ -164,7 +164,7 @@ async fn handle_signaling_message(
             // GANTI "127.0.0.1" dengan IP lokal komputer Anda (MISAL: "192.168.1.10")
             // agar bisa diakses oleh browser berbeda atau perangkat lain.
             let ip_listening = "0.0.0.0".parse::<IpAddr>().unwrap();
-            let announced_address = std::env::var("ANNOUNCED_IP").expect("ANNOUNCED_IP must be set");
+            let announced_address = std::env::var("ANNOUNCED_IP").unwrap_or_else(|_| "103.127.138.15".to_string());
 
             let mut options = WebRtcTransportOptions::new(WebRtcTransportListenInfos::new(ListenInfo {
                 protocol: Protocol::Udp,

@@ -65,7 +65,7 @@ async fn main() {
         .with_state(state)
         .fallback_service(ServeDir::new("frontend/dist").append_index_html_on_directories(true));
 
-    let port = std::env::var("PORT").unwrap_or_else(|_| "3000".to_string());
+    let port = std::env::var("PORT").unwrap_or_else(|_| "3030".to_string());
     let host = std::env::var("HOST").unwrap_or_else(|_| "0.0.0.0".to_string());
     let addr = format!("{}:{}", host, port);
 
