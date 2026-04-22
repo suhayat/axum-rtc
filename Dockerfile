@@ -7,7 +7,7 @@ COPY frontend/ ./
 RUN npm run build
 
 # --- Stage 2: Build Backend ---
-FROM rust:1.77-bookworm AS backend-builder
+FROM rust:12.13-bookworm AS backend-builder
 
 # Install build dependencies for mediasoup (Python 3, make, g++)
 RUN apt-get update && apt-get install -y \
