@@ -172,7 +172,7 @@ async fn handle_signaling_message(
                 announced_address: Some(announced_address),
                 expose_internal_ip: false,
                 port: None,
-                port_range: None,
+                port_range: Some(10000..=10100),
                 flags: None,
                 send_buffer_size: None,
                 recv_buffer_size: None,
