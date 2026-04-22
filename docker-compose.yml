@@ -1,12 +1,5 @@
 services:
   app:
-    build: .
-    ports:
-      - target: 3030
-        published: 3030
-        protocol: tcp
-        mode: host
-      - target: 10000-10100
-        published: 10000-10100
-        protocol: udp
-        mode: host
+    build: . 
+    network_mode: "host"
+    restart: always
