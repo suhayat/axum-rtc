@@ -1,0 +1,6 @@
+services:
+  app:
+    build: . # Ini akan menjalankan Dockerfile kamu yang sudah ada
+    network_mode: "host"
+    restart: always
+    # Jangan masukkan bagian 'ports:', karena mode host otomatis buka semua
