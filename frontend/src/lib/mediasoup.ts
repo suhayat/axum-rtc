@@ -76,7 +76,20 @@ export class MediasoupManager {
       this.audioProducer = await this.sendTransport!.produce({ track: audioTrack });
     }
     if (videoTrack) {
-      this.videoProducer = await this.sendTransport!.produce({ track: videoTrack });
+      this.videoProducer = await this.sendTransport!.produce({ 
+        track: videoTrack,
+        encodings: [
+          {
+            maxBitrate: 500_000,
+            scaleResolutionDownBy: 2,
+          }
+        ],
+        codecOptions: {
+          videoGoogleStartBitrate: 100,
+          videoGoogleMinBitrate: 50,
+          videoGoogleMaxBitrate: 500,
+        } 
+      });
     }
 
     // 7. Get existing producers and consume them
@@ -158,7 +171,7 @@ export class MediasoupManager {
     try {
       const data = await this.signaling.request('consume', {
         producerId,
-        rtpCapabilities: this.device.rtpCapabilities,
+        rtpCapabilities: this.device.recvRtpCapabilities,
       });
 
       const consumer = await this.recvTransport.consume({
