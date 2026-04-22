@@ -1,6 +1,10 @@
 services:
   app:
     build: .
+    environment:
+      - PORT=${PORT}
+      - HOST=${HOST}
+      - ANNOUNCED_IP=${ANNOUNCED_IP}
     ports:
       - "10000-10100:10000-10100/udp"
       - "10000-10100:10000-10100/tcp"
